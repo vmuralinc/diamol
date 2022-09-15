@@ -34,3 +34,17 @@ docker container run -d --name web-ping diamol/ch03-web-ping
 
 #Running  ch03-web-ping container with customized envirionment variable (TARGET)
 docker container run --env TARGET=google.com diamol/ch03-web-ping
+docker container run -e TARGET=docker.com -e INTERVAL=5000 web-ping
+
+#Building a docker image
+cd ch03/exercises/web-ping
+docker image build --tag web-ping .
+
+#list docker images
+docker image ls 'w*'
+
+#image history
+docker image history web-ping
+
+#Docker image size
+docker system df

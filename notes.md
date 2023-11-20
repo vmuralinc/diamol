@@ -3,7 +3,7 @@
 docker container rm -f $(docker container ls -aq)
 
 #recalaim disk space
-docker image rm -f $(docker image ls -f reference='diamol/*' -q
+docker image rm -f $(docker image ls -f reference='diamol/*' -q)
 
 #run a docker container
 docker container run diamol/ch02-hello-diamol)
@@ -48,3 +48,13 @@ docker image history web-ping
 
 #Docker image size
 docker system df
+
+#Multiple stage build process
+cd ch04/exercises/multi-stage
+docker image build -t multi-stage .
+
+#start docker network
+docker network create nat
+
+#run container on docker network
+docker container run --name iotd -d -p 800:80 --network nat image-of-the-day
